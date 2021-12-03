@@ -13,8 +13,18 @@ variable "public_ip_name" {
 }
 
 # Optional
+variable "sku" {
+  type        = string
+  description = "public ip sku ex Basic, Standard"
+  default     = "Standard"
+}
 variable "allocation_method" {
   type        = string
-  description = "Allocation Method"
+  description = "Allocation Method, ex Dynamic, Static"
   default     = "Dynamic"
+}
+variable "availability_zone" {
+  type        = string
+  description = "Availablilty zone, ex 1,2,3, No-Zone, Zone-Redundant"
+  default     = "No-Zone"
 }

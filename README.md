@@ -10,7 +10,24 @@ terraform cloud private repository
 ## 사용 예제
 [usage-sample](./usage-sample)
 ```
-
+provider "azurerm" {
+  features {}
+}
+resource "azurerm_resource_group" "public_ip" {
+  name     = "tf-rg"
+  location = "koreacentral"
+}
+module "public_ip" {
+  source =  "app.terraform.io/cloocus-mspdevops/pip/azurerm"
+  version = "x.x.x"
+  resource_group_name = azurerm_resource_group.public_ip.name
+  location            = azurerm_resource_group.public_ip.location
+  public_ip_name      = "tf-pubilc-ip-01"
+  sku                 = "Standard"
+  allocation_method   = "Static"
+  availability_zone   = "No-Zone"
+  depends_on          = [azurerm_resource_group.public_ip]
+}
 ```
 ## Inputs
 ### Required
@@ -21,29 +38,14 @@ public_ip_name (string)
 ```
 ### Optional
 ```
+sku (string)
 allocation_method (string)
+availability_zone (string)
 ```
 ## Outputs
 [details](./outputs.tf)
 ```
-
+public_ip_id
+public_ip_address
+public_ip_fqdn
 ```
-# terraform-azurerm-pip
-for azure pip module
-### Public ip
-- public ip
-    - Required Values
-        ```
-        resource_group_name
-        location
-        pip_name
-        pip_allocation_method
-        ```
-    - Optional Values
-        ```
-        pip_allocation_method
-        ```
-    - outputs
-        ```
-        public_ip_address_id
-        ```
