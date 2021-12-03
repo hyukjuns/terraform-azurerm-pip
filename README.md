@@ -18,7 +18,7 @@ resource "azurerm_resource_group" "public_ip" {
   location = "koreacentral"
 }
 module "public_ip" {
-  source =  "app.terraform.io/cloocus-mspdevops/pip/azurerm"
+  source =  "app.terraform.io/cloocus-mspdevops/public-ip/azurerm"
   version = "x.x.x"
   resource_group_name = azurerm_resource_group.public_ip.name
   location            = azurerm_resource_group.public_ip.location
