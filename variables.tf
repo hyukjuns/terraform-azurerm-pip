@@ -7,11 +7,13 @@ variable "location" {
   type        = string
   description = "Location"
 }
-variable "pip_name" {
+variable "public_ip_name" {
   type        = string
   description = "Public ip name"
 }
-variable "pip_allocation_method" {
+
+# Optional
+variable "allocation_method" {
   type        = string
   description = "Allocation Method"
   default     = "Dynamic"
