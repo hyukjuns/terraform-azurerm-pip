@@ -1,6 +1,8 @@
 <!-- BEGIN_TF_DOCS -->
 # terraform-azurerm-network
-For terraform cloud private registry
+Terraform Cloud Module Registry에 등록하여 관리 하는 VCS 입니다.
+### Terraform Cloud Module Registry에 연결하기 위한 VCS Naming Convention
+- ```terraform-<PROVIDER>-<MODULENAME>```
 
 ## Requirements
 
